@@ -1,0 +1,27 @@
+{
+   "player_stats": [
+    {
+    "player_name": "Jalen Green",
+    "games_info":[
+    {
+        "game_date":"2025-11-07",
+        "player_team":"Rockets",
+        "opponent_team":"lakers",
+        "points":23,
+        "rebounds": 4,
+        "assists":8
+
+    },
+    {
+        "game_date":"2025-11-09",
+        "player_team":"Rockets",
+        "opponent_team":"Pistons",
+        "points":43,
+        "rebounds": 14,
+        "assists":3
+
+    }
+
+    ] }
+   ]
+}
