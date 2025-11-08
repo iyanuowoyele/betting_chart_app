@@ -2,6 +2,7 @@
 import pandas as pd
 import json as json
 import matplotlib.pyplot as mplot
+import streamlit as st 
 
 #loading my json data 
 with open('data.json','r') as json_data:
@@ -16,18 +17,34 @@ df = pd.DataFrame(games_info)
 #convert to date time for easy manipulation and sorting 
 df['game_date'] = pd.to_datetime(df['game_date'])
 
+st.title('player performance dashboard') # streamlit dashboard title 
+selected_stat = st.selectbox('choose a stat',['points','assists','rebounds'])
+fig,axes = mplot.subplots()
 #plotting our values 
-mplot.plot(df['game_date'],df['points'],marker = 'o', label = 'points')
-mplot.title(f'Chart showing {player_name} performance')
-mplot.xlabel('GAME DATE')
-mplot.ylabel('POINTS')
-mplot.grid(True)
-mplot.legend()
-mplot.show()
+
+
+set_color = None
+if selected_stat == 'points':
+    set_color = 'red'
+elif selected_stat == 'assists':
+    set_color = 'green' 
+else:
+    set_color = 'yellow'       
 
 
 
-print(df)
+
+axes.plot(df['game_date'],df[selected_stat],marker = 'o', label = selected_stat,color = set_color)
+axes.set_title(f'Chart showing {player_name} performance')
+axes.set_xlabel('GAME DATE')
+axes.set_ylabel('STAT VALUES')
+axes.grid(True)
+axes.legend()
+st.pyplot(fig)
+
+
+
+# print(df)
 
 #load and preview the data 
 # lf = pd.read_csv('month.csv')
